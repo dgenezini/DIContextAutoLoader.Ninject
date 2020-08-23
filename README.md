@@ -1,35 +1,25 @@
-# Elmah.Contrib.WebApi.Demystifier
+# DIContextAutoLoader.Ninject
 
 [![NuGet version (DIContextAutoLoader.Ninject)](https://img.shields.io/nuget/v/DIContextAutoLoader.Ninject.svg?style=flat-square)](https://www.nuget.org/packages/DIContextAutoLoader.Ninject/)
 
-<!--
-ElmahExceptionLogger for WebAPI using [Ben.Demystifier](https://github.com/benaadams/Ben.Demystifier) for high performance understanding for stack traces
+Extension of [DIContextAutoLoader](https://github.com/dgenezini/DIContextAutoLoader) to use with Ninject.
 
-For more information about Ben.Demystifier: https://github.com/benaadams/Ben.Demystifier
-
-# Package Manager
+# Package
 
 ```
-    Install-Package Elmah.Contrib.WebApi.Demystifier
+    Install-Package DIContextAutoLoader.Ninject
 ```
 
 # Usage
+
 ```csharp
-public static class WebApiConfig
+public class Startup
 {
-    public static void Register(HttpConfiguration config)
-    {
-        config.Services.Add(typeof(IExceptionLogger), new ElmahDemystifierExceptionLogger());
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AutoLoadServices(typeof(SomeTypeInAssembly).Assembly);
  
         ...
     }
 }
 ```
-
-# Acknowledgements
-Just a copy of [elmah-contrib-webapi](https://github.com/rdingwall/elmah-contrib-webapi)'s [ElmahExceptionLogger](https://github.com/rdingwall/elmah-contrib-webapi/blob/master/src/Elmah.Contrib.WebApi/ElmahExceptionLogger.cs) using [Ben.Demystifier](https://github.com/benaadams/Ben.Demystifier)
-
-# License
-
-As a derivative work of elmah-contrib-webapi, this library is available under the same [MS-PL license](http://www.opensource.org/licenses/ms-pl).
--->

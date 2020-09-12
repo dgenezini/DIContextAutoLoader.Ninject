@@ -13,13 +13,10 @@ Extension of [DIContextAutoLoader](https://github.com/dgenezini/DIContextAutoLoa
 # Usage
 
 ```csharp
-public class Startup
+private static void RegisterServices(IKernel kernel)
 {
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AutoLoadServices(typeof(SomeTypeInAssembly).Assembly);
- 
-        ...
-    }
+    kernel.AutoLoadServices(typeof(SomeTypeInAssembly).Assembly);
+
+    ...
 }
 ```
